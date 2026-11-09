@@ -1,7 +1,7 @@
 {{-- laravel-admin port: dashboard title (original AdminLTE style:
      large thin centred title + small uppercase grey links) --}}
 @php($user = \Encore\Admin\Facades\Admin::user())
-@php($repo = 'https://github.com/nekocastermhb/laravel-admin-filament')
+@php($repo = 'https://github.com/NekoCasterMHB/laravel-admin-filament')
 <div class="la-deprecated-title">
     <div class="la-big-title">{{ config('admin.name') }}</div>
 
