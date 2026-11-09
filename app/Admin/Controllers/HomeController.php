@@ -59,15 +59,15 @@ class HomeController extends Page
             ->row(Dashboard::stats())
             ->row(function (Row $row) {
 
-                $row->column(4, function (Column $column) {
+                // Port note: the original also showed an "Extensions" box
+                // listing the (dormant) laravel-admin extensions. Nothing from
+                // that ecosystem is installed here, so the box is dropped and
+                // the remaining two boxes share the row.
+                $row->column(6, function (Column $column) {
                     $column->append(Dashboard::environment());
                 });
 
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::extensions());
-                });
-
-                $row->column(4, function (Column $column) {
+                $row->column(6, function (Column $column) {
                     $column->append(Dashboard::dependencies());
                 });
             });

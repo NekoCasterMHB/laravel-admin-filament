@@ -589,3 +589,16 @@
         transition: none !important;
     }
 }
+/* ---------- sidebar boundary ----------
+ * A hairline on the inline-end edge plus a soft shadow makes the sidebar
+ * read as a distinct panel (the original AdminLTE sidebar had the same
+ * visual separation).
+ */
+.fi-sidebar {
+    border-inline-end: 1px solid var(--la-card-border);
+    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.04);
+}
+
+.dark .fi-sidebar {
+    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.35);
+}

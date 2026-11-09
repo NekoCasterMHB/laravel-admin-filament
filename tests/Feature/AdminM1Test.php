@@ -250,6 +250,16 @@ class AdminM1Test extends TestCase
             ->assertSee('ユーザーID');
     }
 
+    public function test_dashboard_drops_the_unused_extensions_box(): void
+    {
+        $this->actingAsAdmin()
+            ->get(admin_url(''))
+            ->assertOk()
+            ->assertDontSee('laravel-admin-ext/helpers')
+            ->assertSee('Environment')
+            ->assertSee('Dependencies');
+    }
+
     public function test_topbar_user_menu_and_setting_page(): void
     {
         // Topbar menu: avatar image, name, language sub-menu.

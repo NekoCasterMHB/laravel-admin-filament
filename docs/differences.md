@@ -18,7 +18,8 @@
 8. **`title()` 可见性**同 5;`description()` 方法新增(原为属性 `$description` 数组,属性保留)。
 9. **语言包**:en + zh-CN 为权威(含全部键);其余 21 语言机械搬运,新增键依赖 Laravel 的 en 回退;另支持顶栏动态切换(见 README「语言」)。
 10. **侧边栏导航**:完全由 `admin_menu` 表渲染(经 `MenuProvider` + Filament 导航 builder,渲染时惰性求值),与原版 AdminLTE 侧边栏一致 — "Admin" 作为**可折叠的导航分组**,五个内建页面为组内条目,**每条保留自己的 fa-* 图标**。注:Filament 不允许"分组图标 + 条目图标"并存,故分组仅显示标签(带折叠箭头),图标落在条目上(与原版一致)。资源/页面/Cluster 的**自动导航注册已全部关闭**,Cluster 的**页内子导航也已关闭**,层级只存在于侧边栏。角色/权限过滤与 active 高亮保留。
-11. **仪表盘**:沿用原版素净风格 —— 居中细体大标题 + 小号大写灰色链接(Github/Documentation/Demo)+ 灰色元信息行,以及原 Environment/Extensions/Dependencies 三个朴素材质信息盒;另加一行低对比度统计卡(用户/角色/权限/日志数,查现有表,无新表)。不使用渐变/彩色大色块。
+11. **仪表盘**:沿用原版素净风格 —— 居中细体大标题 + 小号大写灰色链接(Github/Documentation/Demo)+ 灰色元信息行,以及 Environment/Dependencies 两个朴素材质信息盒(原版的 Extensions 盒已移除：扩展生态未安装，该列表只显示一排未安装项);另加一行低对比度统计卡(用户/角色/权限/日志数,查现有表,无新表)。不使用渐变/彩色大色块。
+18. **侧边栏视觉**：侧栏右缘增加 1px 分隔线 + 轻微投影，明确其独立面板身份；折叠/展开按钮改用双箭头（`chevron-double-left/right`）表达方向，替代 Filament 默认的单箭头。
 17. **侧边栏折叠**：启用 Filament 的 `sidebarCollapsibleOnDesktop()`，对应原版 AdminLTE 的 `sidebar-mini` —— 顶栏提供展开/收起按钮，收起后仅显示图标（悬停有 tooltip），状态由 Filament 记忆（localStorage，刷新保持）；宽度切换带 220ms 缓动过渡（`prefers-reduced-motion` 下关闭动画）。图标位置在两态保持一致（收起态隐藏导航滚动条并统一列表几何），因此收起/展开时图标不左右跳动。原配置 `admin.layout` 中的 `sidebar-mini` 语义即由此承接。
 16. **菜单时间戳**：原版 seeder 用裸 `insert` 写入，`admin_menu` 的 created_at/updated_at 为 NULL（编辑弹窗显示 "-"）。移植版在种子末尾补写时间戳（列与取值不变，仅补齐时间），并在测试中断言无 NULL。
 13. **顶栏用户菜单**：以自绘下拉替换 Filament 默认头像菜单（原版 AdminLTE 布局）——头像使用图片（默认素材 `public/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg`，可在设置页上传替换）、显示用户名、内含「用户设置」「语言 → English/简体中文/日本語（当前项打勾）」「退出登录」。顶栏独立语言按钮已移除，语言切换统一在用户菜单内。

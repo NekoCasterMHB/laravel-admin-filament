@@ -19,8 +19,8 @@
 | 功能 | 状态 |
 |---|---|
 | 标题区(Dashboard 标题+链接) | ✅ 视图移植 🔍 |
-| Environment 三栏盒(PHP/Laravel/驱动/时区…) | ✅ 200 🔍 |
-| Extensions 盒(9 个扩展安装状态) | ✅(渲染 not-installed) |
+| Environment 盒(PHP/Laravel/驱动/时区…),与 Dependencies 各占半行 | ✅ 200 🔍 |
+| Extensions 盒 | ➖ 已移除(扩展生态未安装,原版列表无语义) |
 | Dependencies 盒(composer require) | ✅ |
 
 ## 用户管理(/admin/auth/users)
