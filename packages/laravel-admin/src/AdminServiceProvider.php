@@ -184,6 +184,10 @@ class AdminServiceProvider extends ServiceProvider
                     LogOperation::class,
                 ])
                 ->brandName(config('admin.name'))
+                // Collapsible sidebar on desktop (the original AdminLTE
+                // sidebar-mini layout): collapsed state shows icons only with
+                // tooltips; the choice is remembered by Filament.
+                ->sidebarCollapsibleOnDesktop()
         );
     }
 
