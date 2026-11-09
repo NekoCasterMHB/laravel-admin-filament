@@ -120,7 +120,7 @@ class AdminServiceProvider extends ServiceProvider
         // (Filament's pre-compiled Tailwind build only ships classes used
         // by Filament's own UI, so custom classes would not apply).
         \Filament\Support\Facades\FilamentView::registerRenderHook(
-            \Filament\View\PanelsRenderHook::HEAD_START,
+            \Filament\View\PanelsRenderHook::HEAD_END,
             function () {
                 $css = file_get_contents(__DIR__.'/../resources/css/admin.css');
 

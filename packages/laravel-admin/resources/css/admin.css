@@ -533,11 +533,25 @@
 .la-iconpicker-item svg { width: 1rem; height: 1rem; }
 .la-iconpicker-item-active { border-color: var(--primary-500, #6366f1); color: var(--primary-600, #4f46e5); }
 
-/* ---------- sidebar collapse transition (AdminLTE sidebar-mini feel) ----------
- * Filament switches the sidebar between its full and collapsed width
- * instantly; the main column is a flex sibling, so both widths are animated
- * to keep the content shift smooth. Labels fade instead of popping out.
+/* ---------- collapsible sidebar (AdminLTE sidebar-mini) ----------
+ * Filament collapses the sidebar by narrowing it and hiding the labels. Two
+ * details made the icons jump horizontally during that animation:
+ *   1. the collapsed nav shows a scrollbar, which reduces its client width
+ *      and centres the list (the whole list shifted right then left);
+ *   2. Filament switches the item layout to centred when collapsing.
+ * Hiding the scrollbar and keeping the list/item geometry identical in both
+ * states pins the icon offset (24px), so only the width and the labels change.
  */
+
+.fi-sidebar-nav {
+    scrollbar-width: none;
+}
+
+.fi-sidebar-nav::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
 .fi-sidebar,
 .fi-main-ctn {
     transition:
@@ -548,9 +562,25 @@
 
 .fi-sidebar-item-label,
 .fi-sidebar-group-label,
-.fi-sidebar-item .fi-badge,
 .fi-logo-text {
     transition: opacity 140ms ease;
+}
+
+.fi-sidebar .fi-sidebar-nav {
+    padding-inline: 0 !important;
+}
+
+.fi-sidebar .fi-sidebar-nav-groups {
+    width: 100% !important;
+    max-width: none !important;
+    margin-inline: 0 !important;
+    padding-inline: 16px !important;
+}
+
+.fi-sidebar .fi-sidebar-item-btn {
+    justify-content: flex-start !important;
+    padding-inline: 8px !important;
+    width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
