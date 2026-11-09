@@ -149,6 +149,9 @@ class AdminM0Test extends TestCase
             'uri' => '/',
         ]);
 
+        // Menu rows carry timestamps (the original raw insert left them NULL).
+        $this->assertSame(0, DB::table('admin_menu')->whereNull('created_at')->count());
+
         // "Admin" tree node bound to the administrator role.
         $this->assertDatabaseHas('admin_role_menu', [
             'role_id' => 1,

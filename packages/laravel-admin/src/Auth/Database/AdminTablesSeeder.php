@@ -123,6 +123,15 @@ class AdminTablesSeeder extends Seeder
             ],
         ]);
 
+        // Port note: the original seeder used a raw insert, so the menu rows
+        // had NULL timestamps and the edit screen showed "- " for created_at /
+        // updated_at. Fill them once (the seeded columns/values are unchanged).
+        $now = now();
+        Menu::query()->whereNull('created_at')->update([
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]);
+
         // add role to menu.
         Menu::find(2)->roles()->save(Role::first());
     }
