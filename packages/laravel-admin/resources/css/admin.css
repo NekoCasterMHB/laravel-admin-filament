@@ -602,3 +602,37 @@
 .dark .fi-sidebar {
     box-shadow: 1px 0 2px rgba(0, 0, 0, 0.35);
 }
+
+/* ---------- theme switcher inside the user menu ---------- */
+
+.la-user-theme {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.375rem 0.625rem 0.5rem;
+}
+
+.la-user-theme-label {
+    font-size: 0.875rem;
+    color: var(--la-card-fg);
+}
+
+.la-user-theme .fi-theme-switcher {
+    display: inline-flex;
+    gap: 0.25rem;
+    padding: 0.125rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--la-card-border);
+}
+
+.la-user-theme .fi-theme-switcher .fi-icon-btn {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.la-user-theme-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}

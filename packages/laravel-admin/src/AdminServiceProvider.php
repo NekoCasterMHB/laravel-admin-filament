@@ -129,13 +129,13 @@ class AdminServiceProvider extends ServiceProvider
         );
 
 
-        // Sidebar toggle icons: double chevrons make the collapse/expand
-        // direction explicit (Filament defaults to a single caret).
+        // Sidebar toggle icons: Font Awesome indent/outdent (lines + arrow),
+        // provided by owenvoke/blade-fontawesome.
         \Filament\Support\Facades\FilamentIcon::register([
-            \Filament\View\PanelsIconAlias::SIDEBAR_COLLAPSE_BUTTON => \Filament\Support\Icons\Heroicon::OutlinedChevronDoubleLeft,
-            \Filament\View\PanelsIconAlias::SIDEBAR_EXPAND_BUTTON => \Filament\Support\Icons\Heroicon::OutlinedChevronDoubleRight,
-            \Filament\View\PanelsIconAlias::SIDEBAR_COLLAPSE_BUTTON_RTL => \Filament\Support\Icons\Heroicon::OutlinedChevronDoubleRight,
-            \Filament\View\PanelsIconAlias::SIDEBAR_EXPAND_BUTTON_RTL => \Filament\Support\Icons\Heroicon::OutlinedChevronDoubleLeft,
+            \Filament\View\PanelsIconAlias::SIDEBAR_COLLAPSE_BUTTON => 'fas-outdent',
+            \Filament\View\PanelsIconAlias::SIDEBAR_EXPAND_BUTTON => 'fas-indent',
+            \Filament\View\PanelsIconAlias::SIDEBAR_COLLAPSE_BUTTON_RTL => 'fas-indent',
+            \Filament\View\PanelsIconAlias::SIDEBAR_EXPAND_BUTTON_RTL => 'fas-outdent',
             \Filament\View\PanelsIconAlias::TOPBAR_OPEN_SIDEBAR_BUTTON => \Filament\Support\Icons\Heroicon::OutlinedBars3,
             \Filament\View\PanelsIconAlias::TOPBAR_CLOSE_SIDEBAR_BUTTON => \Filament\Support\Icons\Heroicon::OutlinedBars3,
         ]);

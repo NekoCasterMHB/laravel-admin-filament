@@ -67,6 +67,18 @@
             </div>
         @endif
 
+        @if (filament()->hasDarkMode())
+            <div class="la-user-theme">
+                <span class="la-user-theme-label">
+                    @svg('fas-circle-half-stroke', 'la-menu-icon')
+                    <span>{{ __('filament-panels::layout.actions.theme_switcher.label') }}</span>
+                </span>
+
+                {{-- Filament's own switcher (light / dark / system) --}}
+                <x-filament-panels::theme-switcher />
+            </div>
+        @endif
+
         <div class="la-menu-divider"></div>
 
         <form method="POST" action="{{ admin_url('logout') }}">
