@@ -1,0 +1,324 @@
+/*
+ * laravel-admin port — self-contained stylesheet for the ported widgets
+ * and the dashboard. Pure CSS on purpose: Filament ships a pre-compiled
+ * Tailwind build that only contains classes used by Filament's own UI, so
+ * custom Tailwind utilities in package views would silently not apply.
+ *
+ * Class prefix: la-. Dark mode follows Filament's `.dark` root class.
+ * Colors reuse Filament's CSS variables (--primary-500, --gray-*, …)
+ * with static fallbacks.
+ */
+
+:root {
+    --la-card-bg: #ffffff;
+    --la-card-fg: #111827;
+    --la-card-muted: #6b7280;
+    --la-card-border: rgba(17, 24, 39, 0.08);
+    --la-card-ring: rgba(17, 24, 39, 0.05);
+    --la-hover: rgba(17, 24, 39, 0.03);
+}
+
+.dark {
+    --la-card-bg: #101828;
+    --la-card-fg: #f3f4f6;
+    --la-card-muted: #9ca3af;
+    --la-card-border: rgba(255, 255, 255, 0.12);
+    --la-card-ring: rgba(255, 255, 255, 0.1);
+    --la-hover: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- dashboard title (original AdminLTE look) ---------- */
+
+.la-deprecated-title {
+    padding: 2rem 0 1rem;
+    text-align: center;
+}
+
+.la-big-title {
+    font-size: 3.125rem;
+    font-weight: 100;
+    letter-spacing: -0.02em;
+    color: var(--la-card-muted);
+    line-height: 1.1;
+}
+
+.dark .la-big-title { color: var(--la-card-muted); }
+
+.la-title-links {
+    margin: 0.75rem 0 0.25rem;
+}
+
+.la-title-links a {
+    display: inline-block;
+    padding: 0 1.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--la-card-muted);
+}
+
+.la-title-links a:hover { color: var(--la-card-fg); }
+
+.la-title-meta {
+    font-size: 0.75rem;
+    color: var(--la-card-muted);
+    opacity: 0.9;
+}
+
+.la-meta-sep { margin: 0 0.4rem; opacity: 0.5; }
+
+/* ---------- dashboard stat cards ---------- */
+
+.la-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .la-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.la-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1rem;
+    background: var(--la-card-bg);
+    border: 1px solid var(--la-card-border);
+}
+
+.la-stat:hover { border-color: var(--la-card-muted); }
+
+.la-stat-icon {
+    display: flex;
+    height: 2rem;
+    width: 2rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--la-card-muted);
+}
+
+.la-stat-icon svg { width: 1.1rem; height: 1.1rem; }
+
+.la-stat-body { min-width: 0; }
+
+
+.la-stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--la-card-fg);
+    line-height: 1.2;
+}
+
+.la-stat-label {
+    font-size: 0.75rem;
+    color: var(--la-card-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ---------- cards (dashboard boxes + widgets) ---------- */
+
+.la-card {
+    border-radius: 0.75rem;
+    background: var(--la-card-bg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.la-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--la-card-border);
+    font-size: 0.875rem;
+}
+
+.la-card-header strong { font-weight: 600; color: var(--la-card-fg); }
+.la-card-header .la-icon { font-size: 1rem; }
+
+.la-icon.la-text-info { color: var(--info-500, #0ea5e9); }
+.la-icon.la-text-warning { color: var(--warning-500, #f59e0b); }
+.la-icon.la-text-success { color: var(--success-500, #22c55e); }
+.la-icon.la-text-danger { color: var(--danger-500, #ef4444); }
+.la-icon.la-text-primary { color: var(--primary-500, #6366f1); }
+.la-icon.la-text-muted { color: var(--la-card-muted); }
+
+.la-card-body { padding: 0.5rem 1rem; font-size: 0.875rem; color: var(--la-card-fg); }
+
+.la-table { width: 100%; border-collapse: collapse; }
+
+.la-table td { padding: 0.375rem 0; border-bottom: 1px solid var(--la-card-border); }
+.la-table tr:last-child td { border-bottom: 0; }
+.la-table tr { transition: background 0.15s ease; }
+.la-table tr:hover { background: var(--la-hover); }
+.la-table .la-key { color: var(--la-card-muted); }
+.la-table .la-value { color: var(--la-card-fg); font-weight: 500; }
+.la-table .la-key.la-w36 { width: 9rem; }
+.la-table .la-key.la-w56 { width: 14rem; }
+.la-table .la-key.la-w8 { width: 2rem; }
+
+.la-table a { color: inherit; text-decoration: none; }
+.la-table a:hover { color: var(--primary-500, #6366f1); }
+
+/* ---------- generic widgets ---------- */
+
+.la-widget { font-size: 0.875rem; }
+
+.la-infobox { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; }
+.la-infobox-icon { font-size: 1.75rem; line-height: 1; }
+.la-infobox-value { font-size: 1.25rem; font-weight: 700; color: var(--la-card-fg); }
+.la-infobox-text { font-size: 0.75rem; color: var(--la-card-muted); }
+.la-infobox-topic { margin-top: 0.5rem; font-size: 0.75rem; color: var(--la-card-muted); }
+
+.la-callout {
+    border-left: 4px solid var(--info-500, #0ea5e9);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background: rgba(14, 165, 233, 0.07);
+    color: var(--la-card-fg);
+}
+.la-callout.la-style-warning { border-color: var(--warning-500, #f59e0b); background: rgba(245, 158, 11, 0.07); }
+.la-callout.la-style-danger { border-color: var(--danger-500, #ef4444); background: rgba(239, 68, 68, 0.07); }
+.la-callout.la-style-success { border-color: var(--success-500, #22c55e); background: rgba(34, 197, 94, 0.07); }
+.la-callout strong { display: block; font-size: 0.875rem; font-weight: 600; }
+.la-callout .la-content { margin-top: 0.25rem; }
+
+.la-alert {
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background: rgba(14, 165, 233, 0.1);
+    color: var(--la-card-fg);
+}
+.la-alert.la-style-warning { background: rgba(245, 158, 11, 0.1); }
+.la-alert.la-style-danger { background: rgba(239, 68, 68, 0.1); }
+.la-alert.la-style-success { background: rgba(34, 197, 94, 0.1); }
+.la-alert strong { display: block; font-size: 0.875rem; font-weight: 600; }
+
+.la-widget-table { overflow: hidden; }
+.la-widget-table table { width: 100%; font-size: 0.875rem; border-collapse: collapse; }
+.la-widget-table th { padding: 0.5rem 1rem; text-align: left; font-weight: 600; color: var(--la-card-muted); border-bottom: 1px solid var(--la-card-border); }
+.la-widget-table td { padding: 0.5rem 1rem; color: var(--la-card-fg); border-bottom: 1px solid var(--la-card-border); }
+.la-widget-table tr:last-child td { border-bottom: 0; }
+
+.la-tabs-nav { display: flex; flex-wrap: wrap; gap: 0.25rem; padding: 0.5rem 0.75rem 0; border-bottom: 1px solid var(--la-card-border); }
+.la-tabs-nav span { padding: 0.375rem 0.75rem; font-size: 0.875rem; border-radius: 0.375rem 0.375rem 0 0; color: var(--la-card-muted); }
+.la-tabs-nav span.la-active { background: rgba(99, 102, 241, 0.1); color: var(--primary-500, #6366f1); font-weight: 600; }
+.la-tabs-body { padding: 0.75rem 1rem; }
+.la-tab-title { margin-bottom: 0.25rem; font-size: 0.75rem; font-weight: 600; color: var(--la-card-muted); }
+
+.la-collapse details { border-bottom: 1px solid var(--la-card-border); }
+.la-collapse details:last-child { border-bottom: 0; }
+.la-collapse summary { cursor: pointer; padding: 0.625rem 1rem; font-size: 0.875rem; font-weight: 600; color: var(--la-card-fg); }
+.la-collapse .la-collapse-body { padding: 0 1rem 0.75rem; }
+
+.la-form-widget { display: flex; flex-direction: column; gap: 1rem; }
+.la-form-field label { display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500; color: var(--la-card-fg); }
+.la-form-field input {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--la-card-border);
+    background: var(--la-card-bg);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--la-card-fg);
+}
+.la-form-field input[readonly] { color: var(--la-card-muted); }
+
+/* ---------- tree ---------- */
+
+.la-tree { padding: 0.75rem 1rem; font-size: 0.875rem; }
+.la-tree ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+.la-tree li { border-radius: 0.5rem; padding: 0.25rem 0.5rem; transition: background 0.15s ease; }
+.la-tree li:hover { background: var(--la-hover); }
+.la-tree .la-branch { display: flex; align-items: center; gap: 0.5rem; }
+.la-tree .la-branch-icon { color: var(--la-card-muted); }
+.la-tree .la-branch-title { font-weight: 500; color: var(--la-card-fg); }
+.la-tree .la-branch-children { margin-left: 1rem; padding-left: 0.75rem; border-left: 1px solid var(--la-card-border); }
+.la-tree .la-branch-link { color: var(--primary-500, #6366f1); text-decoration: none; }
+.la-tree .la-branch-link:hover { text-decoration: underline; }
+.la-tree .la-empty { color: var(--la-card-muted); }
+
+/* ---------- locale switcher trigger ---------- */
+
+.la-locale-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 0.5rem;
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem;
+    color: var(--la-card-fg);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+.la-locale-btn:hover { background: var(--la-hover); }
+.la-locale-btn svg { width: 1rem; height: 1rem; opacity: 0.7; }
+.la-locale-btn span { font-weight: 500; }
+
+/* ---------- menu tree page (solution-forest/filament-tree) ----------
+ * The plugin fixes each row to 2.5rem, which clips longer labels
+ * (title + URI). Let rows grow and keep the content vertically centred.
+ */
+.filament-tree .dd-item .dd-handle,
+.filament-tree .dd-dragel .dd-handle {
+    height: auto;
+    min-height: calc(var(--spacing) * 10);
+    padding-top: calc(var(--spacing) * 2);
+    padding-bottom: calc(var(--spacing) * 2);
+}
+
+.filament-tree .dd-item .dd-content {
+    height: auto;
+}
+
+.filament-tree .tree-item-display {
+    flex-wrap: wrap;
+    row-gap: calc(var(--spacing) * 1);
+}
+
+.filament-tree .tree-item-display .email,
+.filament-tree .tree-item-display a.la-branch-link {
+    font-size: 0.75rem;
+    opacity: 0.75;
+}
+
+/* The plugin caps the content block (max-width breakpoints) and lets the
+ * flex child shrink to a few px, truncating titles. Stretch it to the row. */
+.filament-tree .dd-item .dd-handle {
+    width: 100%;
+}
+
+.filament-tree .dd-item .dd-content {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+}
+
+.filament-tree .dd-item .dd-content > .tree-item-display {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    max-width: none !important;
+}
+
+.filament-tree .dd-item .item-content-ctn {
+    max-width: none !important;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.filament-tree .dd-item .item-title,
+.filament-tree .dd-item .item-description {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
