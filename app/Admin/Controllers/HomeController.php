@@ -55,7 +55,6 @@ class HomeController extends Page
     {
         return $content
             ->title('Dashboard')
-            ->description('Description...')
             ->row(Dashboard::title())
             ->row(Dashboard::stats())
             ->row(function (Row $row) {

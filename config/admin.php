@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Laravel Admin',
+    'name' => 'Laravel Admin Filament',
 
     /*
     |--------------------------------------------------------------------------
@@ -48,7 +48,7 @@ return [
     | `img` tags allowed, identical semantics to the original AdminLTE header).
     |
     */
-    'logo' => '<b>Laravel</b> Admin',
+    'logo' => '<b>Laravel</b> Admin Filament',
 
     /*
     |--------------------------------------------------------------------------
@@ -61,7 +61,7 @@ return [
     | brand tooltip / panel title instead.
     |
     */
-    'logo-mini' => '<b>LA</b>',
+    'logo-mini' => '<b>LAF</b>',
 
     /*
     |--------------------------------------------------------------------------

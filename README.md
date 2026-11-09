@@ -1,4 +1,4 @@
-# Laravel Admin — Filament Edition
+# Laravel Admin Filament
 
 [![PHP](https://img.shields.io/badge/PHP-%5E8.3-777bb4)](https://www.php.net)
 [![Laravel](https://img.shields.io/badge/Laravel-%5E13-ff2d20)](https://laravel.com)
