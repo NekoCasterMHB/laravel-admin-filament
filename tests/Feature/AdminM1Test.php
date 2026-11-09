@@ -280,7 +280,27 @@ class AdminM1Test extends TestCase
         $this->assertInstanceOf(\Encore\Admin\Form\Fields\IconPicker::class, $icon);
     }
 
-    public function test_login_page_uses_username_field(): void
+    public function test_menu_tree_buttons_follow_the_locale(): void
+    {
+        foreach (['ja' => 'すべて展開', 'zh-CN' => '全部展开'] as $locale => $expected) {
+            $this->app->setLocale($locale);
+
+            $this->assertSame($expected, __('filament-tree::filament-tree.button.expand_all'));
+            $this->assertSame('保存', __('filament-tree::filament-tree.button.save'));
+        }
+
+        // And the page renders them (session locale is applied by middleware).
+        $this->actingAsAdmin();
+
+        $this->app->setLocale('ja');
+
+        $this->get(admin_url('auth/menu'))
+            ->assertOk()
+            ->assertSee('すべて展開')
+            ->assertSee('保存');
+    }
+    
+public function test_login_page_uses_username_field(): void
     {
         $this->get(admin_url('auth/login'))
             ->assertOk()
