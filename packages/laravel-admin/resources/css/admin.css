@@ -322,3 +322,213 @@
     overflow: visible;
     text-overflow: clip;
 }
+
+/* ---------- topbar user menu (original AdminLTE look) ---------- */
+
+.la-user-menu { position: relative; }
+
+/* our menu replaces Filament's built-in avatar dropdown */
+.fi-user-menu { display: none !important; }
+
+.la-user-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+    color: var(--la-card-fg);
+}
+.la-user-trigger:hover { background: var(--la-hover); }
+
+.la-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--la-hover);
+}
+.la-avatar-lg { width: 2.5rem; height: 2.5rem; }
+.la-avatar-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--la-card-muted);
+}
+
+.la-user-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    max-width: 12rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.la-user-caret { width: 1rem; height: 1rem; opacity: 0.6; }
+
+.la-user-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    width: 16rem;
+    padding: 0.375rem;
+    border-radius: 0.75rem;
+    background: var(--la-card-bg);
+    border: 1px solid var(--la-card-border);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    z-index: 40;
+}
+
+.la-user-header {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.625rem 0.625rem;
+    border-bottom: 1px solid var(--la-card-border);
+    margin-bottom: 0.375rem;
+}
+.la-user-header-text { display: flex; flex-direction: column; min-width: 0; }
+.la-user-header-text strong { font-size: 0.875rem; color: var(--la-card-fg); }
+.la-user-header-text span { font-size: 0.75rem; color: var(--la-card-muted); }
+
+.la-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0.625rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: transparent;
+    color: var(--la-card-fg);
+    font-size: 0.875rem;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+.la-menu-item:hover { background: var(--la-hover); }
+.la-menu-item-danger { color: var(--danger-600, #dc2626); }
+.la-menu-icon { width: 0.95rem; height: 0.95rem; opacity: 0.7; flex-shrink: 0; }
+.la-menu-item-active { color: var(--primary-600, #4f46e5); font-weight: 600; }
+.la-menu-check { width: 1rem; display: inline-flex; justify-content: center; }
+.la-menu-check svg { width: 0.9rem; height: 0.9rem; }
+.la-menu-divider { height: 1px; margin: 0.375rem 0; background: var(--la-card-border); }
+
+.la-menu-item-sub { position: relative; }
+.la-sub-caret { width: 0.9rem; height: 0.9rem; margin-left: auto; opacity: 0.6; }
+
+.la-submenu {
+    position: absolute;
+    right: calc(100% + 0.25rem);
+    top: 0;
+    width: 11rem;
+    padding: 0.375rem;
+    border-radius: 0.75rem;
+    background: var(--la-card-bg);
+    border: 1px solid var(--la-card-border);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- icon picker field ---------- */
+
+.la-iconpicker { position: relative; }
+
+.la-iconpicker-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.la-iconpicker-preview {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    border: 1px solid var(--la-card-border);
+    background: var(--la-hover);
+    color: var(--la-card-fg);
+    font-size: 1.1rem;
+}
+.la-iconpicker-preview svg { width: 1.25rem; height: 1.25rem; }
+
+.la-iconpicker-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--la-card-border);
+    background: var(--la-card-bg);
+    color: var(--la-card-fg);
+    font-size: 0.875rem;
+}
+
+.la-btn {
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--la-card-border);
+    background: var(--la-card-bg);
+    color: var(--la-card-fg);
+    font-size: 0.875rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.la-btn:hover { background: var(--la-hover); }
+
+.la-iconpicker-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 0.375rem);
+    z-index: 30;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--la-card-border);
+    background: var(--la-card-bg);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.la-iconpicker-search {
+    width: 100%;
+    margin-bottom: 0.625rem;
+    padding: 0.45rem 0.7rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--la-card-border);
+    background: var(--la-card-bg);
+    color: var(--la-card-fg);
+    font-size: 0.85rem;
+}
+
+.la-iconpicker-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0.25rem;
+    max-height: 15rem;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .la-iconpicker-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+}
+
+.la-iconpicker-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem;
+    border-radius: 0.4rem;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--la-card-fg);
+    cursor: pointer;
+}
+.la-iconpicker-item:hover { background: var(--la-hover); border-color: var(--la-card-border); }
+.la-iconpicker-item svg { width: 1rem; height: 1rem; }
+.la-iconpicker-item-active { border-color: var(--primary-500, #6366f1); color: var(--primary-600, #4f46e5); }

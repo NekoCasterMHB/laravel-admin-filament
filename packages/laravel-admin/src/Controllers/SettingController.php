@@ -51,6 +51,28 @@ class SettingController extends Page
     /**
      * {@inheritdoc}
      */
+    public function getHeading(): string|\Illuminate\Contracts\Support\Htmlable|null
+    {
+        return $this->heading ?? $this->getTitle();
+    }
+
+    /**
+     * Embed the setting form into the page (the default page view only
+     * renders the `content` schema — without this the page showed just the
+     * heading and the save button).
+     *
+     * {@inheritdoc}
+     */
+    public function content(Schema $schema): Schema
+    {
+        return $schema->components([
+            \Filament\Schemas\Components\EmbeddedSchema::make('form'),
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public static function shouldRegisterNavigation(): bool
     {
         // Reached from the user menu, like the original top-right dropdown.
@@ -86,7 +108,7 @@ class SettingController extends Page
                         ->label(trans('admin.password_confirmation'))
                         ->password()
                         ->revealable()
-                        ->sameAs('password')
+                        ->rules(['same:password'])
                         ->dehydrated(false),
                 ])->columnSpan(1),
                 \Filament\Schemas\Components\Group::make([

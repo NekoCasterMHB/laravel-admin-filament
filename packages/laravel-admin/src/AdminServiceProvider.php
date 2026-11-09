@@ -96,13 +96,17 @@ class AdminServiceProvider extends ServiceProvider
 
         $this->ensureHttps();
 
-        // Topbar language switcher (runtime locale switching).
-        if (\Encore\Admin\Support\Locales::switchable()) {
-            \Filament\Support\Facades\FilamentView::registerRenderHook(
-                \Filament\View\PanelsRenderHook::TOPBAR_END,
-                fn () => view('admin::partials.locale-switcher')->render(),
-            );
+        // Topbar user menu (original AdminLTE dropdown): avatar image,
+        // user setting, language sub-menu and sign out. It replaces
+        // Filament's letter-avatar menu (hidden via admin.css), so the
+        // language switcher now lives under "Language" there.
+        \Filament\Support\Facades\FilamentView::registerRenderHook(
+            \Filament\View\PanelsRenderHook::TOPBAR_END,
+            fn () => view('admin::partials.user-menu')->render(),
+        );
 
+        // Runtime language switching endpoint (session-stored locale).
+        if (\Encore\Admin\Support\Locales::switchable()) {
             app('router')->prefix(trim(config('admin.route.prefix'), '/'))
                 ->middleware('web')
                 ->name(config('admin.route.prefix').'.')
@@ -166,13 +170,6 @@ class AdminServiceProvider extends ServiceProvider
                         ->groups($navigation['groups'])
                         ->items($navigation['items']);
                 })
-                // User menu: the original top-right dropdown's setting link.
-                ->userMenuItems([
-                    \Filament\Actions\Action::make('setting')
-                        ->label(fn () => trans('admin.user_setting'))
-                        ->icon('fas-gear')
-                        ->url(fn () => admin_url('auth/setting')),
-                ])
                 // The canonical Filament web stack (cookies / CSRF /
                 // sessions / error sharing) plus the ported middleware:
                 // session-locale applier (runtime language switching) and

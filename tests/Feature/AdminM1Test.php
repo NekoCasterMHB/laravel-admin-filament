@@ -250,6 +250,36 @@ class AdminM1Test extends TestCase
             ->assertSee('ユーザーID');
     }
 
+    public function test_topbar_user_menu_and_setting_page(): void
+    {
+        // Topbar menu: avatar image, name, language sub-menu.
+        $html = $this->actingAsAdmin()->get(admin_url(''))->getContent();
+
+        $this->assertStringContainsString('la-user-trigger', $html);
+        $this->assertStringContainsString('user2-160x160.jpg', $html);
+        $this->assertStringContainsString('la-submenu', $html);
+        $this->assertStringContainsString(admin_url('locale/ja'), $html);
+
+        // User setting page embeds the form (name / password / avatar upload).
+        $this->get(admin_url('auth/setting'))
+            ->assertOk()
+            ->assertSee('Password confirmation')
+            ->assertSee('type="file"', false);
+    }
+
+    public function test_icon_field_uses_the_icon_picker(): void
+    {
+        $menu = \Encore\Admin\Auth\Database\Menu::query()->where('title', 'Users')->first();
+
+        $schema = \Filament\Schemas\Schema::make()->record($menu);
+        $schema = (new \Encore\Admin\Controllers\MenuController())->form()->applyToSchema($schema, 'edit', $menu);
+
+        $icon = collect($schema->getComponents())
+            ->first(fn ($component) => method_exists($component, 'getName') && $component->getName() === 'icon');
+
+        $this->assertInstanceOf(\Encore\Admin\Form\Fields\IconPicker::class, $icon);
+    }
+
     public function test_login_page_uses_username_field(): void
     {
         $this->get(admin_url('auth/login'))

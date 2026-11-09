@@ -817,7 +817,7 @@ class Form
             Field::TYPE_SELECT => $this->buildSelectField($field, false),
             Field::TYPE_MULTIPLE_SELECT, Field::TYPE_LISTBOX => $this->buildSelectField($field, true),
             Field::TYPE_TEXTAREA => Textarea::make($column)->rows($field->getRows()),
-            Field::TYPE_ICON => TextInput::make($column)->suffixIcon('fas-bars'),
+            Field::TYPE_ICON => \Encore\Admin\Form\Fields\IconPicker::make($column),
             Field::TYPE_HIDDEN => Hidden::make($column),
             Field::TYPE_TAGS => \Filament\Forms\Components\TagsInput::make($column),
             Field::TYPE_EDITOR => \Filament\Forms\Components\RichEditor::make($column),
